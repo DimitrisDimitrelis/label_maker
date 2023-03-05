@@ -11,17 +11,22 @@
 </head>
 <body>
 	<div class="container-input" id="container-input">
-		<div>
-			<label for="code-input">Κωδικός:</label>
-			<input type="text" id="code-input" placeholder="Κωδικός...">
-		</div>
-		<div>
-			<label for="count-input">Ταμπέλες:</label>
-			<input type="text" id="count-input" placeholder="Αριθμός ταμπελών...">
-		</div>
-
-		<button id="submit-button">Δημιουργία</button>
-		<button id="save-button">Αποθήκευση</button>
+        <div id="inputs" class="inputs">
+            <div>
+                <label for="code-input">Κωδικός:</label>
+                <input type="text" id="code-input" placeholder="Κωδικός...">
+            </div>
+            <div>
+                <label for="count-input">Ταμπέλες:</label>
+                <input type="text" id="count-input" placeholder="Αριθμός ταμπελών...">
+            </div>
+        </div>
+		
+        <div id="buttons" class="buttons">
+            <button id="submit-button">Δημιουργία</button>
+            <button id="reset-button" onClick="window.location.reload();">Επαναφορά</button>
+            <button id="save-button">Αποθήκευση</button>       
+        </div>
 	</div>
 	
 	<!--ERROR elements-->

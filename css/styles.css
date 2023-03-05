@@ -1,25 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;600&display=swap');
+
+* {
+    font-family: 'Golos Text', sans-serif;
+}
 .container-input {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
     background-color: gray;
     padding-inline: 3rem;
     padding-block: 1.5rem;
 }
-.container-input > * > *{
-    display: inline-block;
-    border-radius: 5px;
+.inputs {
+    display: flex;
+    padding-bottom: 2rem;
+}
+.inputs > * {
+    font-size: 1.2rem;
     font-weight: 600;
+}
+.buttons {
+    display: flex;
+    flex: 1 1 auto;
+}
+.buttons > * {
+    margin-inline: 1rem;
+    padding: .5rem 1rem;
 }
 label {
     font-size: 1.2rem;
+    margin-left: .5rem;
 }
 input {
-    height: 1.2rem;
+    width: 40mm;
 }
 button {
-    height: 1.5rem;
+    margin-inline: .1rem;
     border-radius: 5px;
+    font-weight: 600;
+    border: none;
 }
 .err {
     color: brown;

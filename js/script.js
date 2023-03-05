@@ -265,6 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .from(element)
         .save();
-    });  
+    });
   }).catch(error => {console.log('Error fetching data.json', error)});
 });
