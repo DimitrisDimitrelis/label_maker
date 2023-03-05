@@ -114,6 +114,7 @@ button {
     position: absolute;
     top: 13mm;
     right: -13mm;
+    display: block;
     /* border: 1px solid black; */
 
     transform: translate(-50%, -50%);
