@@ -1,0 +1,120 @@
+.container-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    padding-inline: 3rem;
+    padding-block: 1.5rem;
+}
+.container-input > * > *{
+    display: inline-block;
+    border-radius: 5px;
+    font-weight: 600;
+}
+label {
+    font-size: 1.2rem;
+}
+input {
+    height: 1.2rem;
+}
+button {
+    height: 1.5rem;
+    border-radius: 5px;
+}
+.err {
+    color: brown;
+    font-weight: 600;
+    background-color: pink;
+    width: fit-content;
+    border-radius: 10px;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    display: none;
+}
+.msg {
+    color: green;
+    font-weight: 600;
+    background-color: greenyellow;
+    width: fit-content;
+    border-radius: 10px;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    display: none;
+}
+
+/*LABELS*/
+.label-container {
+    width: 210mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 0px;
+    column-gap: 0px;
+}
+
+.label {
+    width: 70mm;
+    height: 36mm;
+    /* border: 1px solid black; */
+    position: relative;
+}
+
+
+.name {
+    position: absolute;
+    top: 2mm;
+    left: 2mm;
+}
+
+.process {
+    position: absolute;
+    top: 7mm;
+    left: 2mm; 
+}
+
+.size {
+    position: absolute;
+    top: 12mm;
+    left: 2mm;
+}
+
+.din {
+    position: absolute;
+    top: 17mm;
+    left: 2mm;
+}
+
+.material {
+    position: absolute;
+    top: 22mm;
+    left: 2mm;
+}
+
+.qty {
+    position: absolute;
+    bottom: .2mm;
+    left: 2mm;
+}
+
+.tmx {
+    font-size: .5rem;
+}
+
+.barcode {
+    z-index: 10;
+    position: absolute;
+    bottom: 2mm;
+    right: 2mm;
+}
+
+.img {
+    z-index: -1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-height: 20mm;
+    position: absolute;
+    top: 13mm;
+    right: -13mm;
+    /* border: 1px solid black; */
+
+    transform: translate(-50%, -50%);
+}
