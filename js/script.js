@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   let dataAll = [];
-  fetch('../json/data.json').then(response => response.json()).then(data => {
+  fetch('./json/data.json').then(response => response.json()).then(data => {
     dataAll = data.map(item => {
       return {
         name: item.Name,
