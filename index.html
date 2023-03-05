@@ -3,6 +3,7 @@
 <head>
 	<title>User Input Example</title>
 	<link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./root.css">
 	<link rel="stylesheet" href="./css/styles.css">
 
 	<script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
@@ -10,23 +11,14 @@
 
 </head>
 <body>
-	<div class="container-input" id="container-input">
-        <div id="inputs" class="inputs">
-            <div>
-                <label for="code-input">Κωδικός:</label>
-                <input type="text" id="code-input" placeholder="Κωδικός...">
-            </div>
-            <div>
-                <label for="count-input">Ταμπέλες:</label>
-                <input type="text" id="count-input" placeholder="Αριθμός ταμπελών...">
-            </div>
-        </div>
-		
-        <div id="buttons" class="buttons">
-            <button id="submit-button">Δημιουργία</button>
-            <button id="reset-button" onClick="window.location.reload();">Επαναφορά</button>
-            <button id="save-button">Αποθήκευση</button>       
-        </div>
+    <div class="container-input" id="container-input">
+        <label for="code-input">Κωδικός:</label>
+        <input type="text" id="code-input" placeholder="Κωδικός...">
+        <label for="count-input">Ταμπέλες:</label>
+        <input type="text" id="count-input" placeholder="Αριθμός ταμπελών...">
+        <button id="submit-button">Δημιουργία</button>
+        <button id="reset-button" onClick="window.location.reload();">Επαναφορά</button>
+        <button id="save-button">Αποθήκευση</button> 
 	</div>
 	
 	<!--ERROR elements-->
