@@ -157,10 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
       label.appendChild(img);
       img.id = `img-${i}`;
       img.classList.add('img');
-      if (data.img) {
-          img.src = data.img;
+      if (data.din) {
+          img.src = `./img/${data.din}.jpg`;
       } else {
-          img.src = '';
+          img.style.display = 'none';
       }
 
       //Generate Barcode
