@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const ERRORS = {
     errAll : document.getElementById('err-all'),
     errCode : document.getElementById('err-code'),
-    errCount : document.getElementById('err-count')
+    errCount : document.getElementById('err-count'),
+    errUpperCase : document.getElementById('err-upper-case')
   };
   //MESSAGES
   const MSG = {
@@ -23,37 +24,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.getElementById('submit-button');
 
   ///WORKS///
-  function checkInput(codeText, countText, ERRORS) {
-    ERRORS.errAll.style.display = 'none';
-    ERRORS.errCode.style.display = 'none';
-    ERRORS.errCount.style.display = 'none';
+  // function checkInput(codeText, countText, ERRORS) {
+  //   ERRORS.errAll.style.display = 'none';
+  //   ERRORS.errCode.style.display = 'none';
+  //   ERRORS.errCount.style.display = 'none';
 
-    if (codeText === '' || countText === '') {
-      ERRORS.errAll.style.display = 'block';
-      return; // stop further execution		
-    }
-    if (Number(countText) > 23) {
-      ERRORS.errCount.style.display = 'block';
-      return; // stop further execution
-    }
+  //   if (codeText === '' || countText === '') {
+  //     ERRORS.errAll.style.display = 'block';
+  //     return; // stop further execution		
+  //   }
+  //   if (Number(countText) > 23) {
+  //     ERRORS.errCount.style.display = 'block';
+  //     return; // stop further execution
+  //   }
 
-  /////////////////////////////////
-  ///DOES NOT WORK PROPERLY
-    // let flag = false;
-    // MSG.msgCheckCode.style.display = 'block';
-    // for (let i = 0; i < dataAll.length; i++) {
-    //   console.log('inside for...');
-    //   if (codeText === dataAll[i].subcode) {
-    //     flag = true;
-    //   }
-    // }
-    // MSG.msgCheckCode.style.display = 'none';
-    // if (flag === false) {
-    //   ERRORS.errCode.style.display = 'block';
-    //   return; // stop further execution
-    // }
-    /////////////////////////////////
-  }
+  // /////////////////////////////////
+  // ///DOES NOT WORK PROPERLY
+  //   // let flag = false;
+  //   // MSG.msgCheckCode.style.display = 'block';
+  //   // for (let i = 0; i < dataAll.length; i++) {
+  //   //   console.log('inside for...');
+  //   //   if (codeText === dataAll[i].subcode) {
+  //   //     flag = true;
+  //   //   }
+  //   // }
+  //   // MSG.msgCheckCode.style.display = 'none';
+  //   // if (flag === false) {
+  //   //   ERRORS.errCode.style.display = 'block';
+  //   //   return; // stop further execution
+  //   // }
+  //   /////////////////////////////////
+  // }
   ///////////
   ///WORKS///
   function buildData(dataAll, codeText) {
@@ -233,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ERRORS.errAll.style.display = 'none';
       ERRORS.errCode.style.display = 'none';
       ERRORS.errCount.style.display = 'none';
+      ERRORS.errUpperCase.style.display = 'none';
   
       if (codeText === '' || countText === '') {
         ERRORS.errAll.style.display = 'block';
@@ -241,6 +243,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (Number(countText) > 23) {
         ERRORS.errCount.style.display = 'block';
         return; // stop further execution
+      }
+      let temp = codeText.toUpperCase();
+      if (temp !== codeText) {
+        ERRORS.errUpperCase.style.display = 'block';
+        return;
       }
       /////////////////////////////////////////
       /////////////////////////////////////////
