@@ -1,6 +1,7 @@
 'use strict'
 
 document.addEventListener('DOMContentLoaded', () => {
+  const submitButton = document.getElementById('submit-button');
   let globalCount = 0;
 
   /////////////////////////////////////////
@@ -10,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     errAll : document.getElementById('err-all'),
     errCode : document.getElementById('err-code'),
     errCount : document.getElementById('err-count'),
-    errUpperCase : document.getElementById('err-upper-case')
+    errUpperCase : document.getElementById('err-upper-case'),
+    errLatin : document.getElementById('err-latin')
   };
   //MESSAGES
   const MSG = {
@@ -20,43 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //////////////////////////////////////////
   //////////////////////////////////////////
 
-
-  const submitButton = document.getElementById('submit-button');
-
-  ///WORKS///
-  // function checkInput(codeText, countText, ERRORS) {
-  //   ERRORS.errAll.style.display = 'none';
-  //   ERRORS.errCode.style.display = 'none';
-  //   ERRORS.errCount.style.display = 'none';
-
-  //   if (codeText === '' || countText === '') {
-  //     ERRORS.errAll.style.display = 'block';
-  //     return; // stop further execution		
-  //   }
-  //   if (Number(countText) > 23) {
-  //     ERRORS.errCount.style.display = 'block';
-  //     return; // stop further execution
-  //   }
-
-  // /////////////////////////////////
-  // ///DOES NOT WORK PROPERLY
-  //   // let flag = false;
-  //   // MSG.msgCheckCode.style.display = 'block';
-  //   // for (let i = 0; i < dataAll.length; i++) {
-  //   //   console.log('inside for...');
-  //   //   if (codeText === dataAll[i].subcode) {
-  //   //     flag = true;
-  //   //   }
-  //   // }
-  //   // MSG.msgCheckCode.style.display = 'none';
-  //   // if (flag === false) {
-  //   //   ERRORS.errCode.style.display = 'block';
-  //   //   return; // stop further execution
-  //   // }
-  //   /////////////////////////////////
-  // }
-  ///////////
-  ///WORKS///
   function buildData(dataAll, codeText) {
     let data = {};
     for (let i = 0; i < dataAll.length; i++) {
@@ -76,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return data;
   }
-  ///////////
 
   function generateLabel(data, countText) {
     let i = 0;
@@ -184,10 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
     globalCount = Number(countText);
-    console.log(globalCount);
   }
 
-  ///WORKS//
   function convertGreekToLatin(data) {
     const greek_to_latin = {
         'Α':'A','Β':'B','Γ':'C','Δ':'D','Ε':'E','Ζ':'Z','Η':'H',
@@ -204,8 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let codeLatin = replaceGreek(data.code);
     return codeLatin;
   }
-  /////////
-
 
   let dataAll = [];
   fetch('./json/data.json').then(response => response.json()).then(data => {
@@ -231,22 +191,44 @@ document.addEventListener('DOMContentLoaded', () => {
       const countInput = document.getElementById('count-input');
       const countText = countInput.value.trim();
 
-      ERRORS.errAll.style.display = 'none';
-      ERRORS.errCode.style.display = 'none';
-      ERRORS.errCount.style.display = 'none';
-      ERRORS.errUpperCase.style.display = 'none';
+      Object.entries(ERRORS).forEach( ([key,value]) => {
+        value.style.display = 'none';
+      });
+      Object.entries(MSG).forEach( ([key,value]) => {
+        value.style.display = 'none';
+      });
   
       if (codeText === '' || countText === '') {
         ERRORS.errAll.style.display = 'block';
-        return; // stop further execution		
+        return;
       }
       if (Number(countText) > 23) {
         ERRORS.errCount.style.display = 'block';
-        return; // stop further execution
+        return;
+      }
+      const latin = /[A-Za-z]/;
+      let tempLatin = latin.test(codeText);
+      if (tempLatin === true) {
+        ERRORS.errLatin.style.display = 'block';
+        return;
       }
       let temp = codeText.toUpperCase();
       if (temp !== codeText) {
         ERRORS.errUpperCase.style.display = 'block';
+        return;
+      }
+
+      let flag = false;
+      let i = 0;
+      do {
+        console.log('inside for...');
+        if (codeText === dataAll[i].subcode) {
+          flag = true;
+        }
+        i++;
+      } while (flag === false && i < dataAll.length);
+      if (flag === false) {
+        ERRORS.errCode.style.display = 'block';
         return;
       }
       /////////////////////////////////////////
