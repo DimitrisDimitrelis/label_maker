@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //////////////////////////////////////////
   //////////////////////////////////////////
 
-  function buildData(dataAll, codeText) {
+  function buildData(dataAll, codeText, qtyText) {
     let data = {};
     for (let i = 0; i < dataAll.length; i++) {
       if (codeText === dataAll[i].subcode) {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
           din: dataAll[i].din,
           material: dataAll[i].material,
           code: dataAll[i].subcode,
-          qty: dataAll[i].qty,
+          qty: qtyText,
           img: dataAll[i].img
         }
       }
@@ -65,17 +65,41 @@ document.addEventListener('DOMContentLoaded', () => {
       label.appendChild(process);
       process.id = `process-${i}`;
       process.classList.add('process');
-      if (data.process) {
-          if (data.thread) {
-              process.innerHTML = `${data.process} ${data.thread}`;
-          } else {
-              process.innerHTML = `${data.process}`;
-          }
-      } else if (data.thread) {
-          process.innerHTML = `${data.thread}`;
-      } else {
-          process.innerHTML = '';
-      }
+      
+      
+      
+      
+      let temp = '';
+      Object.entries(data).forEach( ([key,value]) => {
+        if ((key === 'process' && (data.process)) || (key === 'thread' && (data.thread)) || (key === 'din' && (data.din)) || (key === 'material') && (data.material)) {
+          temp = temp + ' ' + value;
+          console.log(temp);
+        }
+      });
+      process.innerHTML = temp;
+
+
+
+
+      // if (data.process) {
+      //     if (data.thread) {
+      //         if (data.din) {
+      //           if (data.material) {
+      //             process.innerHTML = `${data.process} ${data.thread} ${data.din} ${data.material}`;
+      //           } else {
+      //             process.innerHTML = `${data.process} ${data.thread} ${data.din}`;
+      //           }
+      //         } else {
+      //           process.innerHTML = `${data.process} ${data.thread}`;
+      //         }
+      //     } else {
+      //         process.innerHTML = `${data.process}`;
+      //     }
+      // } else if (data.thread) {
+      //     process.innerHTML = `${data.thread}`;
+      // } else {
+      //     process.innerHTML = '';
+      // }
 
       //Generate Size
       let size = document.createElement('p');
@@ -85,26 +109,26 @@ document.addEventListener('DOMContentLoaded', () => {
       size.innerHTML = data.size;
 
       //Generate Din
-      let din = document.createElement('p');
-      label.appendChild(din);
-      din.id = `din-${i}`;
-      din.classList.add('din');
-      if (data.din) {
-          din.innerHTML = data.din;
-      } else {
-          din.innerHTML = '';
-      }
+      // let din = document.createElement('p');
+      // label.appendChild(din);
+      // din.id = `din-${i}`;
+      // din.classList.add('din');
+      // if (data.din) {
+      //     din.innerHTML = data.din;
+      // } else {
+      //     din.innerHTML = '';
+      // }
 
-      //Generate Material
-      let material = document.createElement('p');
-      label.appendChild(material);
-      material.id = `material-${i}`;
-      material.classList.add('material');
-      if (data.material) {
-          material.innerHTML = data.material;
-      } else {
-          material.innerHTML = '';
-      }
+      // //Generate Material
+      // let material = document.createElement('p');
+      // label.appendChild(material);
+      // material.id = `material-${i}`;
+      // material.classList.add('material');
+      // if (data.material) {
+      //     material.innerHTML = data.material;
+      // } else {
+      //     material.innerHTML = '';
+      // }
 
       //Generate Quantity
       let qty = document.createElement('p');
@@ -190,6 +214,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const codeText = codeInput.value.trim();
       const countInput = document.getElementById('count-input');
       const countText = countInput.value.trim();
+      const qtyInput = document.getElementById('count-qty');
+      const qtyText = qtyInput.value.trim();
 
       Object.entries(ERRORS).forEach( ([key,value]) => {
         value.style.display = 'none';
@@ -234,12 +260,13 @@ document.addEventListener('DOMContentLoaded', () => {
       /////////////////////////////////////////
       /////////////////////////////////////////
   
-      let data = buildData(dataAll, codeText);
+      let data = buildData(dataAll, codeText, qtyText);
       generateLabel(data, countText);
   
       ///CLEAR INPUT FIELDS///
       document.getElementById('code-input').value = '';
       document.getElementById('count-input').value = '';
+      document.getElementById('count-qty').value = '';
     });
     let pdfbtn = document.getElementById('save-button');
     pdfbtn.addEventListener('click', function () {

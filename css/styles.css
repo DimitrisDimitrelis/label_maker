@@ -56,37 +56,40 @@ button {
 .name {
     position: absolute;
     top: 2mm;
-    left: 2mm;
+    right: 2mm;
 }
 
 .process {
     position: absolute;
-    top: 7mm;
-    left: 2mm; 
+    top: 7.5mm;
+    right: 2mm; 
 }
 
 .size {
     position: absolute;
     top: 12mm;
-    left: 2mm;
+    right: 2mm;
+
+    font-weight: 600;
+    font-size: 150%;
 }
 
 .din {
     position: absolute;
-    top: 17mm;
-    left: 2mm;
+    top: 19mm;
+    right: 2mm;
 }
 
 .material {
     position: absolute;
-    top: 22mm;
-    left: 2mm;
+    top: 24mm;
+    right: 2mm;
 }
 
 .qty {
     position: absolute;
-    bottom: .2mm;
-    left: 2mm;
+    top: 18.5mm;
+    right: 2mm;
 }
 
 .tmx {
@@ -97,19 +100,19 @@ button {
     z-index: 10;
     position: absolute;
     bottom: 2mm;
-    right: 2mm;
+    left: 2mm;
 }
 
 .img {
     z-index: -1;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
-    max-height: 20mm;
+    max-height: 8mm;
     position: absolute;
-    top: 13mm;
-    right: -13mm;
+    bottom: 13.5mm;
+    left: 2mm;
     display: block;
     /* border: 1px solid black; */
 
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
 }
