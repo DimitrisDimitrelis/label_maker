@@ -8,12 +8,19 @@ input {
 button {
     font-weight: 600;
     padding: .5rem 1rem;
+    margin-inline: 1rem;
 }
 .container-input {
     text-align: center;
     background-color: antiquewhite;
     padding-inline: 1rem;
     padding-block: 2rem;
+}
+.inputs {
+    padding: .5rem;
+}
+.buttons {
+    padding: .5rem;
 }
 .err {
     color: brown;
